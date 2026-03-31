@@ -23,6 +23,9 @@ jobs:
           java-version: "21"
           cache: gradle
 
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
       - name: Build
         run: ./gradlew build
 
@@ -31,4 +34,3 @@ jobs:
         with:
           files: build/libs/*.jar
           generate_release_notes: true
-
