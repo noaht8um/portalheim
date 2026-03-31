@@ -2,8 +2,15 @@ plugins {
     java
 }
 
+val minecraftVersion = "1.21.4"
+val defaultVersion = "0.1.0-SNAPSHOT"
+
 group = "dev.noaht8um"
-version = "0.1.0-SNAPSHOT"
+version = providers.gradleProperty("releaseVersion").orElse(defaultVersion).get()
+
+base {
+    archivesName.set("portalheim-paper-mc$minecraftVersion")
+}
 
 repositories {
     mavenCentral()
@@ -11,9 +18,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:${minecraftVersion}-R0.1-SNAPSHOT")
     compileOnly("xyz.jpenilla:squaremap-api:1.3.12")
-    testImplementation("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    testImplementation("io.papermc.paper:paper-api:${minecraftVersion}-R0.1-SNAPSHOT")
 
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")

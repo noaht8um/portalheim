@@ -21,16 +21,22 @@ jobs:
         with:
           distribution: corretto
           java-version: "21"
-          cache: gradle
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
+      - name: Resolve release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew clean build -PreleaseVersion="${RELEASE_VERSION}"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/libs/*.jar
+          name: Portalheim ${{ github.ref_name }}
+          files: build/libs/portalheim-paper-mc*.jar
           generate_release_notes: true

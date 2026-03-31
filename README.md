@@ -31,7 +31,11 @@ Build the plugin jar:
 
 The output jar is written to:
 
-`build/libs/portalheim-0.1.0-SNAPSHOT.jar`
+`build/libs/portalheim-paper-mc1.21.4-0.1.0-SNAPSHOT.jar`
+
+For a tagged release build, GitHub Actions automatically swaps in the tag version, for example:
+
+`build/libs/portalheim-paper-mc1.21.4-0.1.0.jar`
 
 ## Install
 
@@ -41,6 +45,26 @@ The output jar is written to:
 4. Restart the server or run `/portalheim reload`.
 
 If `squaremap` is installed, Portalheim will also register a `Portalheim` layer and draw each portal as a dedicated icon marker on the map automatically.
+
+## Releases
+
+Normal pushes and pull requests run the `Build` workflow only.
+
+To publish a GitHub release:
+
+1. Push your latest commit to `main`.
+2. Create a tag such as `v0.1.0`.
+3. Push that tag.
+
+Example:
+
+```powershell
+git push origin main
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The `Release` workflow uses the tag as the release version automatically, creates a GitHub Release named `Portalheim v0.1.0`, and uploads the built jar as an asset.
 
 ## Portal Setup
 
