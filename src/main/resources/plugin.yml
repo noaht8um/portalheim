@@ -1,0 +1,18 @@
+name: Portalheim
+version: ${version}
+main: dev.noaht8um.portalheim.PortalheimPlugin
+api-version: "1.21"
+authors:
+  - noaht8um
+description: Valheim-inspired paired portals for Paper servers.
+softdepend:
+  - squaremap
+commands:
+  portalheim:
+    description: Portalheim administration commands.
+    permission: portalheim.admin
+    usage: /portalheim <reload|list|inspect>
+permissions:
+  portalheim.admin:
+    description: Allows administration of Portalheim portals.
+    default: op

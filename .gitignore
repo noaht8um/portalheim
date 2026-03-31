@@ -1,0 +1,8 @@
+.gradle/
+.gradle-user/
+build/
+out/
+*.iml
+.idea/
+squaremap-api-src/
+squaremap-api-*-sources.jar

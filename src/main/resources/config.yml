@@ -1,0 +1,6 @@
+warmup-ticks: 30
+teleport-cooldown-ticks: 60
+particles-enabled: true
+sounds-enabled: true
+debug-logging: false
+
